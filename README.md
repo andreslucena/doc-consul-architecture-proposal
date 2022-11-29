@@ -1,0 +1,78 @@
+# Introducción
+
+## **¿Qué es este documento?**
+
+Este es un informe que quiere servir de punto de partida a una discusión y hoja de ruta sobre mejoras en la colaboración del desarrollo de Consul (_Open Government and E-Participation Web Software_) y otros proyectos basados en él desarrollados por distintas administraciones municipales, como decidim.barcelona, Decide Madrid, Consulta Oviedo y A Porta Aberta de La Coruña, pensando a su vez en un modelo que sirva para cualquier otra administración, institución u organización que quiera utilizarla y adaptarla a sus necesidades.
+
+## **Metadatos**
+
+### **Autoría**
+
+Este borrador está siendo escrito por Andrés Pereira de Lucena de la Asociación aLabs y Antonio Blanco-Gracia. Los autores son a su vez los editores del texto. Las contribuciones de terceras personas serán aceptadas o rechazadas y en su caso reconocidas en este apartado.
+
+**Revisores**
+
+Daniel Vazquez (Asociación aLabs), Antonio Pardo (Asociación aLabs), David Rodriguez (Asociación aLabs).
+
+![Asociación aLabs](.gitbook/assets/image\_0.png)
+
+### **Resumen**
+
+Imaginamos tres escenarios de futuro de desarrollo de Consul: a) desarrollo centralizado en el Ayuntamiento de Madrid, b) desarrollo descentralizado en algunos forks mantenidos por algunas ciudades o diputaciones, y c) desarrollo distribuido en un número amplio de ciudades. Consideramos que el tercer escenario es el más deseable políticamente, pero las implicaciones no son evidentes:
+
+* ¿En qué medida es importante favorecer que el desarrollo de Cónsul sea distribuido para la construcción y fortalecimiento de la red de ciudades del cambio?
+* ¿En qué medida es esperable que la reutilización de código escrito distribuidamente compense el mayor esfuerzo para escribirlo y documentarlo por un cambio en la arquitectura monolítica actual?
+
+Como primer elemento de reflexión, el presente documento analiza tres alternativas en el cambio de arquitectura de Consul que pueden favorecer la reutilización y el desarrollo distribuido del código:
+
+1. Directorios de personalización
+2. Modularización (engines)
+3. Microservicios
+
+Tras exponer los argumentos a favor y en contra de la adopción de cada uno, se valoran en función de requisitos expresados por el programador principal de decidim.barcelona (adaptación del diseño, adaptación a diferentes procesos participativos, traducciones y páginas estáticas), junto con los de rapidez de desarrollo, facilidad de reutilización y de contribución al código.
+
+A la vista de los resultados del análisis, se propone implementar a corto plazo la propuesta "1. Directorios de Personalización" (ver código en Anexo). A medio plazo, El Ajuntament de Barcelona se ha propuesto desarrollar una versión funcional implantando la propuesta “2. Modularización”, tras lo cual se podría realizar una reunión con el equipo de desarrollo del Ayuntamiento de Madrid para intercambiar impresiones sobre las conversaciones generadas por este documento y reflexionar sobre siguientes pasos a dar.
+
+Para la escritura de este informe se han realizado numerosas reuniones en coordinación:
+
+* con personal del Área de Derechos de Ciudadanía, Participación y Transparencia del Ayuntamiento de Barcelona el día 31 de marzo.
+* con el equipo de desarrollo original de Consul, del Área de Gobierno de Participación Ciudadana, Transparencia y Gobierno Abierto del Ayuntamiento de Madrid, los días 25 de mayo y 26 de mayo, durante las jornadas de Ciudad Democráticas en Medialab Prado (Madrid), en las sesiones de "Coding Democracy: Ruby on Rails hackathon".
+* con el equipo de desarrollo de decidim.barcelona el día y 3 de junio para revisiones de los modelos y arquitectura planteada.
+
+Se ha hecho basada en este informe una presentación llamada "Arquitecturas Ruby On Rails, escalabilidad y colaboración" en el marco de las jornadas MetaDecidim el día 25 de noviembre de 2016. Se encuentra disponible en [https://www.youtube.com/watch?v=2RiHhflm5-Q](https://www.youtube.com/watch?v=2RiHhflm5-Q)
+
+{% embed url="https://www.youtube.com/watch?v=2RiHhflm5-Q" %}
+
+Ver diapositivas de la presentación
+
+[https://docs.google.com/presentation/d/1T7XcvzGZolHzXeZpkohy7bxIONJGjA\_7WcXxZ8AL3Dg/pub?start=true\&loop=false\&delayms=3000](https://docs.google.com/presentation/d/1T7XcvzGZolHzXeZpkohy7bxIONJGjA\_7WcXxZ8AL3Dg/pub?start=true\&loop=false\&delayms=3000)
+
+### **Palabras clave**
+
+Plataformas de software para democracia participativa, modularización, Ruby On Rails, Engines, componentes, adaptación, escalabilidad, customización, red de ciudades del cambio.
+
+### **Estructura**
+
+* [Introducción](./)
+* [Contexto: el impulso de la democracia participativa en los ayuntamientos del cambio](chapter1.md)
+* [Balance y disyuntiva: primeras decisiones políticas en torno al desarrollo de Consul](chapter2.md)
+* [Posibles escenarios del desarrollo de Consul](chapter3.md)
+* [Análisis de alternativas para potenciar la reutilización y el desarrollo colaborativo de Consul](chapter4.md)
+* [Propuesta de hoja de ruta, y preguntas para la reflexión colectiva](chapter5.md)
+* [Anexo](chapter6.md)
+
+### **Cómo citar este documento**
+
+Pereira de Lucena, A. y Blanco-Gracia, A. (2016) _Propuesta de cambios en la Arquitectura de Consul_.
+
+### **Licencia**
+
+Copyright 2016 Andrés Pereira de Lucena y Antonio Blanco-Gracia, bajo las licencias Creative Commons BY-SA (Reconocimiento compartir Igual) y GFDL (Licencia de Documentación Libre de GNU):
+
+#### **CC BY-SA: Creative Commons Reconocimiento Compartir Igual 4.0 Internacional**
+
+Usted es libre de copiar y redistribuir el material en cualquier medio o formato, remezclar, transformar y crear a partir del material, para cualquier finalidad, incluso comercial. El licenciador no puede revocar estas libertades mientras cumpla con los términos de la licencia. Bajo las siguientes condiciones: a) Reconocimiento: debe reconocer adecuadamente la autoría, proporcionar un enlace a la licencia e indicar si se han realizado cambios. Puede hacerlo de cualquier manera razonable, pero no de una manera que sugiera que tiene el apoyo del licenciador o lo recibe por el uso que hace. b) Compartir Igual: Si remezcla, transforma o crea a partir del material, deberá difundir sus contribuciones bajo la misma licencia que el original. No hay restricciones adicionales, no puede aplicar términos legales o medidas tecnológicas que legalmente restrinjan realizar aquello que la licencia permite. Puede encontrarse la licencia completa en:[ https://creativecommons.org/licenses/by-sa/4.0/deed.es\_ES](https://creativecommons.org/licenses/by-sa/4.0/deed.es\_ES)
+
+#### **GFDL: Licencia de Documentación Libre de GNU**
+
+Se concede permiso para copiar, distribuir y/o modificar este documento bajo los términos de la licencia de documentación libre GNU, versión 1.3 o cualquier otra versión posterior publicada por la Free Software Foundation; sin secciones invariantes ni textos de cubierta delantera, tampoco textos de contraportada. Puede encontrar una copia de la licencia en[ http://www.gnu.org/copyleft/fdl.html](http://www.gnu.org/copyleft/fdl.html)

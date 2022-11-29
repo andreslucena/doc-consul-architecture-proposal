@@ -1,0 +1,54 @@
+# Balance y disyuntiva: primeras decisiones políticas en torno al desarrollo de Consul
+
+## Fortalezas del modelo actual de desarrollo de Consul
+
+Consul ha demostrado ser una herramienta efectiva y fiable en su estado actual de desarrollo y ha permitido en un tiempo "record" iniciar procesos de participación ciudadana en las ciudades que la han utilizado. Con una presión mediática enorme por parte de los medios tradicionales, estos equipos de gobierno se han visto forzados a mostrar resultados rápidamente (_quick wins_) para mantener su credibilidad de gobiernos transformadores. Aún con dificultades por los plazos tan cortos, algunos ayuntamientos han sido capaces de abrir esos procesos participativos amplios en su primer año de mandato.
+
+Una de las principales razones de la velocidad de desarrollo de Consul reside en la elección del lenguaje (Ruby) y de la "plataforma de trabajo" (Ruby on Rails). Ruby on Rails permite desarrollar aplicaciones sobre una arquitectura predeterminada.
+
+Por tanto,
+
+* un desarrollador nuevo no debe aprender la arquitectura específica de Consul ya que es la predeterminada en Ruby on Rails.
+* al no tener arquitectura propia que diseñar y documentar, se acortan los tiempos necesarios de desarrollo.
+* al estar todo contenido en el mismo repositorio y ser un solo componente monolítico es simple de desplegar. Cualquier ayuntamiento puede tomar el código de Consul y adaptarlo a sus necesidades con la ayuda de un programador que conozca Ruby On Rails.
+
+## Debilidades del modelo actual de desarrollo de Consul
+
+Por otro lado, la experiencia han mostrado los obstáculos para la reutilización, modificación y redistribución del código de Consul producido por el Ayuntamiento de Madrid por parte de otros ayuntamientos.
+
+La arquitectura monolítica de Ruby Rails implica que cada ayuntamiento deba crear una bifurcación del código en la cual tiene que sobrescribir los cambios esenciales (imagen, textos, funcionalidades, tests) para poder ser reutilizada. Como ejemplo de lo que cada fork debe cambiar se encuentra la validación del código postal que se comprueba al momento de verificar la residencia:
+
+![Figura 1: Validación de código postal residente en el municipio de Madrid](.gitbook/assets/image\_1.png)
+
+**Figura 1**: Validación de código postal residente en el municipio de Madrid
+
+Otros ejemplos de cambios que debe realizar un proyecto basado en Consul es el modificar todas las referencias a Madrid que se encuentran repartidas por todo el código, como en el sistema de envío de correos, sitemap, plantillas HTML, modelos, etc:
+
+![Figura 2: Búsqueda de Madrid en repositorio de GitHub de Consul](.gitbook/assets/image\_2.png)
+
+**Figura 2**: Búsqueda de Madrid en repositorio de GitHub de Consul
+
+Además, adoptar el código de Consul implica adoptar su proceso participativo implícito, y su código solo recogerá aquellas mejoras y modificaciones realizadas (o revisadas y aceptadas) por el equipo de desarrollo del Ayuntamiento de Madrid. Puesto que cada municipio parte de una realidad distinta, en unas ocasiones tiene que diseñar todas sus prácticas de participación desde cero por falta de tradición al respecto, o bien tiene que rediseñar procesos participativos teniendo en cuenta numerosas prácticas ya consolidadas. Por tanto cada ciudad debe adapta el código de Consul para poder dar soporte a sus procesos participativos.
+
+Este modelo provoca un desarrollo en paralelo que es visible gráficamente en la funcionalidad de gráficos del Github de Consul en el apartado de Red (Network):
+
+![Figura 3: Gráfico de redes y en GitHub](.gitbook/assets/image\_3.png)
+
+**Figura 3**: Gráfico de redes y en GitHub
+
+Por tanto,
+
+* solo el Ayuntamiento de Madrid puede aprovechar el código de Consul tal como está en el repositorio. Los ayuntamientos que quieran utilizarlo están obligados a realizar una adaptación del código, incluso aún si no necesitan modificar sus funcionalidades para adaptarlo a otros procesos de participación distintos a los que realiza el Ayuntamiento de Madrid.
+* esto produce un desarrollo en paralelo de diferentes versiones de Consul, y no facilita compartir avances entre los distintos equipos de desarrolladores.
+* se genera un cuello de botella en la introducción y aceptación de funcionalidades nuevas por parte del equipo de desarrollo de Consul del Ayuntamiento de Madrid.
+* no facilita la actualización de los proyectos. Ahora mismo al ser un modelo basado en bifurcaciones (forks) la solución consiste en realizar fusiones (merges), comprobar conflictos que se puedan producir por el proceso de fusionado, mantener una buena suite de tests para controlar regresiones, etc. Esto se torna complicado según el código del fork se va alejando más del hecho en upstream, suponiendo una "_carga cognitiva importante que normalmente lleva un sólo programador_".
+
+Este es un problema común en el desarrollo con Ruby On Rails, que al no disponer de una arquitectura propia en el sentido fuerte del término, no es posible modificarla y mantenerla a medida que avanza el proyecto. Dicho problema no se visualiza al principio del proyecto ya que el "dolor" del desarrollo es menor que al seguir una arquitectura estructurada, pero al avanzar sumándole funcionalidades comienza a hacerse patente:
+
+![Figura 4: Rails Vanilla vs. Rails Estructurado](.gitbook/assets/image\_4.png)
+
+**Figura 4**: Rails Vanilla vs. Rails Estructurado
+
+Nos encontramos ante un dilema: ¿hasta qué punto queremos favorecer la reutilización (por el máximo número de municipios) y el desarrollo colaborativo (entre los diferentes equipos de desarrollo que modifiquen y mejoren Consul) a costa de cambiar el modelo de desarrollo actual, que favorece que los ayuntamientos puedan desarrollar rápidamente sus "versiones" de Consul por separado?
+
+Para ayudar a responder a esta pregunta, en la siguiente sección analizamos tres alternativas que favorecerían la reutilización y el desarrollo colaborativo de Consul, y que implican distintos esfuerzos de implementación en función de su impacto en el modelo actual de desarrollo de Consul.
