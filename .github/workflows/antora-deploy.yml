@@ -1,0 +1,2 @@
+- name: Antora Site
+  uses: kameshsampath/antora-site-action@v0.2.4
