@@ -1,0 +1,9 @@
+name: es
+title: "Propuesta de cambios en la arquitectura de Consul"
+version: main
+asciidoc:
+  attributes:
+    page-lang: es@
+nav:
+  - modules/ROOT/nav.adoc
+

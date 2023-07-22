@@ -1,0 +1,27 @@
+= Posibles escenarios del desarrollo de Consul
+
+Imaginamos tres escenarios de desarrollo posibles: centralizado, descentralizado, o distribuido.
+
+== Desarrollo centralizado de Consul
+
+Este escenario corresponde al modelo actual de funcionamiento: el Ayuntamiento de Madrid mantiene el código de Cónsul, evaluando e incorporando aquellas modificaciones realizadas en los "forks" o bifurcaciones del código que se realicen en otros ayuntamientos u organizaciones.
+
+Consul será más o menos versátil en función del esfuerzo del Ayuntamiento de Madrid en evaluar e incorporar las modificaciones realizadas en otros lugares, reescribiendo y testeando el código. A medida que las diferentes bifurcaciones se vayan pareciendo menos, esta labor será más difícil.
+
+El grado de adopción de Consul por parte de otros municipios y organizaciones dependerá del coste (en recursos contratados externamente y dedicación del personal propio) que les puede suponer la reescritura del código para adaptarlo a sus necesidades, en comparación con el coste de otras alternativas (libres o privativas) disponibles. Este coste variará en función del grado de estandarización de los procesos participativos en los diferentes municipios. Si todos lanzan procesos similares a los realizados por el Ayuntamiento de Madrid, este coste sería pequeño, pero pensamos que la personalización de la herramienta a bajo coste puede ser un factor importante en el criterio de adopción de la misma.
+
+Pensamos que este escenario favorecerá que los ayuntamientos con recursos puedan desarrollar rápidamente su propia versión de Cónsul, y que otros ayuntamientos con menos recursos puedan optar por ofertas de herramientas y consultoría de "llave en mano", basadas o no en Consul, para sus procesos participativos. El desarrollo de nuevo código será rápido, pero no se promoverá un grado de reutilización del código existente, ni la contribución al código de Cónsul (con sus consecuencias negativas en términos de creatividad y de ahorro de recursos).
+
+== Desarrollo descentralizado de Consul
+
+Es posible que las versiones realizadas en unos cuantos ayuntamientos, (o por diputaciones, por ejemplo, para dar respuesta a su realidad municipal), ganen cierta autonomía y generen una cierta "tipología" de versiones de Consul cuyo mantenimiento sea realizado por sus impulsores iniciales. En el caso de que ganen cierto capital social, la página original de Consul podría identificarlos y proponerlos como alternativas.
+
+El grado de adopción de Consul sería mayor por parte de los ayuntamientos, al disponerse de diferentes versiones adaptadas a diferentes realidades. El coste de adopción por otros ayuntamientos, y sobre todo la posibilidad de contribuir al código de estas versiones, dependerá de la variedad de las diferentes versiones, y de si han mantenido el modelo de desarrollo actual, o han realizado modificaciones como las que se expondrán en el siguiente apartado del documento.
+
+Pensamos que en este escenario serían más los ayuntamientos que adoptaran alguna de las versiones de Consul existentes. Existiría un cierto grado de reutilización de código entre versiones, en la medida que la comunidad de usuarios de cada versión lo requiera. Consul sería un poco más competitivo frente a otras alternativas, por ofrecer un primer grado de personalización de partida.
+
+== Desarrollo distribuido de Consul
+
+En el caso de que una nueva arquitectura de Consul facilitará la contribución y la reutilización de código, se avanzaría hacia un modelo de desarrollo distribuido. Algunos ayuntamientos podrían seguir trabajando en Ruby Rails, pero serían los menos. Los tiempos de desarrollo al principio se alargarían, aunque a medio plazo posiblemente se reduciría drásticamente la necesidad de escribir código por parte de los municipios que lo quisieran adoptar, y en la mayoría no sería necesario en absoluto. No es el mejor escenario en términos de coste/efectividad para los ayuntamientos que más contribuyeran al código de Consul porque los tiempos de desarrollo podrían alargarse, pero sí que sería el más coste/efectivo en términos del conjunto del sistema/red.
+
+Pensamos que en este escenario Consul sería una propuesta muy atractiva para los ayuntamientos y las organizaciones, por su bajo coste de implantación, y las facilidades de personalización gracias a la reutilización inmediata de código generado en otros municipios que puedan plantear procesos participativos similares. Es el escenario más empoderante, en cuanto a que ofrecería facilidades para la reutilización del código sin necesidad de programadores, y en cuanto a la posibilidad de contribuir al código, con pequeñas o grandes mejoras, en beneficio de toda la comunidad de usuarios. En este sentido prefiguraría los modos políticos de colaboración municipalista que imaginamos para todos sus ámbitos competenciales.

@@ -1,0 +1,7 @@
+* xref:index.adoc[Introducción]
+* xref:chapter1.adoc[Contexto: el impulso de la democracia participativa en los ayuntamientos del cambio]
+* xref:chapter2.adoc[Balance y disyuntiva: primeras decisiones políticas en torno al desarrollo de Consul]
+* xref:chapter3.adoc[Posibles escenarios del desarrollo de Consul]
+* xref:chapter4.adoc[Análisis de alternativas para potenciar la reutilización y el desarrollo colaborativo de Consul]
+* xref:chapter5.adoc[Propuesta de hoja de ruta, y preguntas para la reflexión colectiva]
+* xref:chapter6.adoc[Anexo]

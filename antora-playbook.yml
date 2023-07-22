@@ -1,0 +1,11 @@
+site:
+  title: Propuesta de cambios en la arquitectura de Consul
+content:
+  sources:
+  - url: .
+    branches: HEAD
+    start_path: docs/es
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
