@@ -1,0 +1,18 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Antora Site
+        uses: kameshsampath/antora-site-action@v0.2.4
+        with:
+          antora_playbook: antora-playbook.yml
