@@ -14,3 +14,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Antora Site
         uses: kameshsampath/antora-site-action@v0.2.4
+        with:
+          antora_playbook: antora-playbook.yml
